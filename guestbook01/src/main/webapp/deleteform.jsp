@@ -6,7 +6,7 @@
 </head>
 <body>
 	<form method="post" action="/guestbook01/delete.jsp">
-	<input type='hidden' name="no" value=<%= request.getParameter("no") %>>
+	<input type='text' name="no" value=<%= request.getParameter("no") %>>
 	<table>
 		<tr>
 			<td>비밀번호</td>

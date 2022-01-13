@@ -1,11 +1,19 @@
+<%@page import="com.poscoict.guestbook.vo.guestbookVo"%>
+<%@page import="java.util.List"%>
+<%@page import="com.poscoict.guestbook.dao.guestbookDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	guestbookDao dao = new guestbookDao();  //EmaillistDao객체 dao로 생성
+	List<guestbookVo> list = new guestbookDao().findAll();
+	//빨간 줄 뜨는 import 부분에서 ctrl space 키를 누르면 내가 import 해야 될 것이 나온다.
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>방명록</title>
 </head>
 <body>
-	<form action="/guestbook01/add.jsp" method="post">
+	<form action="<%= request.getContextPath() %>/addguest.jsp" method="post">
 		<table border=1 width=500>
 			<tr>
 				<td>이름</td><td><input type="text" name="name"></td>
@@ -20,7 +28,9 @@
 		</table>
 	</form>
 	<br>
+		
 	<table width=510 border=1>
+	
 		<tr>
 			<td>[1]</td>
 			<td>안대혁</td>
@@ -37,5 +47,8 @@
 </td>
 		</tr>
 	</table>
+	<%
+			}
+	%>
 </body>
 </html>
