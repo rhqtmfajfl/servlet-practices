@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.poscoict.emaillist.vo.EmaillistVo;
 
+
 public class EmaillistDao {
 	public List<EmaillistVo> findAll() {
 		List<EmaillistVo> result = new ArrayList<>();
@@ -28,7 +29,7 @@ public class EmaillistDao {
 		
 			//3. SQL 준비
 			String sql = "select no, first_name, last_name, email from emaillist order by no desc";
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql); // 
 			
 			//4. 바인딩(binding)
 			
@@ -49,7 +50,7 @@ public class EmaillistDao {
 				
 				result.add(vo);
 			}
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) { //보일러 flate 상투적인 코드
 			System.out.print("드라이버 로딩 실패 : " + e);
 		} catch (SQLException e) {
 			System.out.print("error : " + e);
@@ -71,5 +72,10 @@ public class EmaillistDao {
 		}
 		
 		return result;
+	}
+
+	public boolean insert(EmaillistVo vo) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

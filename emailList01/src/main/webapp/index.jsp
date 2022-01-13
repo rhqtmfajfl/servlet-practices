@@ -1,4 +1,12 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@page import="com.poscoict.emaillist.vo.EmaillistVo"%>
+<%@page import="java.util.List"%>
+<%@page import="com.poscoict.emaillist.dao.EmaillistDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	EmaillistDao dao = new EmaillistDao();
+	List<EmaillistVo> list = new EmaillistDao().findAll();
+	//빨간 줄 뜨는 import 부분에서 ctrl space 키를 누르면 내가 import 해야 될것이 나온다.
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
