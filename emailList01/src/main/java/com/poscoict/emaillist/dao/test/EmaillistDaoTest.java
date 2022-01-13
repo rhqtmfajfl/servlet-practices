@@ -9,21 +9,21 @@ public class EmaillistDaoTest {
 
 	public static void main(String[] args) {
 		testInsert();
-//		testFindAll();
+		testFindAll();
 	}
 
 	private static void testInsert() {
-		EmaillistVo vo = new EmaillistVo();
-		vo.setFirstName("홍");
-		vo.setLastName("길동");
-		vo.setEmail("gilldong@gmail.com");
+		EmaillistVo vo = new EmaillistVo();  //vo insert
+//		vo.setFirstName("홍");
+//		vo.setLastName("길동");
+//		vo.setEmail("gilldong@gmail.com");
 		
 		boolean result = new EmaillistDao().insert(vo);
 		System.out.println(result ? "success" : "fail");
 	}
 
 	private static void testFindAll() {
-		List<EmaillistVo> list = new EmaillistDao().findAll();
+		List<EmaillistVo> list = new EmaillistDao().findAll(); //ㄷ
 		for(EmaillistVo vo : list) {
 			System.out.println(vo);
 		}

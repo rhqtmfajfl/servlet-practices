@@ -9,5 +9,7 @@
 	<modules>
 		<module>helloweb</module>
 		<module>emailList01</module>
+		<module>guestboard01</module>
+		<module>guestbook01</module>
 	</modules>
 </project>
