@@ -1,6 +1,6 @@
-﻿<%@page import="com.poscoict.emaillist.vo.EmaillistVo"%>
-<%@page import="java.util.List"%>
+<%@page import="com.poscoict.emaillist.vo.EmaillistVo"%>
 <%@page import="com.poscoict.emaillist.dao.EmaillistDao"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	EmaillistDao dao = new EmaillistDao();  //EmaillistDao객체 dao로 생성
@@ -18,9 +18,9 @@
 	<!-- 메일정보 리스트 -->
 	<%
 	//list 개수 만큼 반복 된다.
-	//데이터는 vo에 들어있는데 데이터를 찍어 낼때는 
-		for(EmaillistVo vo : list) { //안에 들어있는 list 개수 만큼 반복 //EmaillistVo 객체에 들어있는 firstname과
-			//lastName 그리고 // email 혀식으로 vo 가 타입이 된다.
+		//데이터는 vo에 들어있는데 데이터를 찍어 낼때는 
+			for(EmaillistVo vo : list) { //안에 들어있는 list 개수 만큼 반복 //EmaillistVo 객체에 들어있는 firstname과
+		//lastName 그리고 // email 혀식으로 vo 가 타입이 된다.
 	%>
 		<table border="1" cellpadding="5" cellspacing="2">
 			<tr>

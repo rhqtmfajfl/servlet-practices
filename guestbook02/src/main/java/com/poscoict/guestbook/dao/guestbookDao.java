@@ -12,69 +12,8 @@ import com.poscoict.guestbook.vo.guestbookVo;
 
 
 public class guestbookDao {
-
 	
-	public List<guestbookVo> findAll() {  //EmaillistDaoTest에서 사용하기 위한 findAll() 함수 생성
-		// 반환 타입은 List의 EmaillistVo이다.
-		List<guestbookVo> result = new ArrayList<>(); //ArrayList 생성
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			
-			conn = getConnection();		
-		
-			//3. SQL 준비
-			String sql = "select no, name, password, date_format(reg_date, \"%Y/%m/%d %H%i%s\") as reg_date, message \r\n"
-					+ "from guestbook order by reg_date desc";
-			pstmt = conn.prepareStatement(sql); // 
-			
-			//4. 바인딩(binding)
-			
-			//5. SQL 실행
-			rs = pstmt.executeQuery();
-		
-			while(rs.next()) {
-				int no = rs.getInt(1);
-				String name = rs.getString(2);
-				String password = rs.getString(3);
-				String reg_date = rs.getString(4);
-				String message = rs.getString(5);
-
-				guestbookVo vo = new guestbookVo();
-				vo.setNo(no);
-				vo.setName(name);
-				vo.setPassword(password);
-				vo.setReg_date(reg_date);
-				vo.setMessage(message);
-
-				result.add(vo);
-			}
-		} catch (SQLException e) {
-			System.out.print("error : " + e);
-		} finally {
-			// 자원 정리
-			try {
-				if(rs != null) {
-					rs.close();
-				}
-				if(pstmt != null) {
-					pstmt.close();
-				}
-				if(conn != null) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return result;
-	}
-
-	public boolean insert(guestbookVo vo) {
+	public boolean delete(Long no,String password) {
 
 		boolean result = false;
 		
@@ -82,18 +21,20 @@ public class guestbookDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
+//		String password = request.getParameter("") 
+		
 		try {
 			
 			conn = getConnection();			
 		
 			//3. SQL 준비
-			String sql = "insert into guestbook values(null,?, ?, ?,now())";
+			String sql = "delete from guestbook where no = " + no + " and password = " + password ;
 			pstmt = conn.prepareStatement(sql); // 
 			
 			//4. 바인딩(binding)
-			pstmt.setString(1, vo.getName());  //vo의 get으로 부터 first ㅜ믇 을 가져온다.
-			pstmt.setString(2, vo.getPassword());
-			pstmt.setString(3, vo.getMessage());
+//			pstmt.setString(1, vo.getName());  //vo의 get으로 부터 first ㅜ믇 을 가져온다.
+//			pstmt.setString(2, vo.getPassword());
+//			pstmt.setString(3, vo.getMessage());
 
 			//5. SQL 실행
 			//update 된 수 바노한
@@ -121,7 +62,119 @@ public class guestbookDao {
 		}
 		return result;
 	}
-	public boolean delete(int i, String password) {
+	
+	public int countAll() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			conn = getConnection();		
+		
+			//3. SQL 준비
+			String sql = "select no from emaillist ";
+			pstmt = conn.prepareStatement(sql); // 
+			
+			//4. 바인딩(binding)
+			
+			//5. SQL 실행
+			rs = pstmt.executeQuery();
+		
+			while(rs.next()) {
+				Long no = rs.getLong(1);
+			
+				
+				guestbookVo vo = new guestbookVo();
+				vo.setNo(no);
+		
+				
+//				result.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.print("error : " + e);
+		} finally {
+			// 자원 정리
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+//		return result;
+		return 0;
+	}
+	public List<guestbookVo> findAll() {  //EmaillistDaoTest에서 사용하기 위한 findAll() 함수 생성
+		// 반환 타입은 List의 EmaillistVo이다.
+		List<guestbookVo> result = new ArrayList<>(); //ArrayList 생성
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			conn = getConnection();		
+		
+			//3. SQL 준비
+			String sql = "select no, name, password, date_format(reg_date, '%Y/%m/%d %H%i%s') as reg_date, message from guestbook order by no desc";
+			pstmt = conn.prepareStatement(sql); // 
+			
+			//4. 바인딩(binding)
+			
+			//5. SQL 실행
+			rs = pstmt.executeQuery();
+		
+			while(rs.next()) {
+				Long no = rs.getLong(1);
+				String name = rs.getString(2);
+				String password = rs.getString(3);
+				String message = rs.getString(4);
+				String rag_date = rs.getString(5);
+				
+				guestbookVo vo = new guestbookVo();
+				vo.setNo(no);
+				vo.setName(name);
+				vo.setPassword(password);
+				vo.setMessage(message);
+				vo.setDate(rag_date);
+//				vo.setEmail(email);
+				
+				result.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.print("error : " + e);
+		} finally {
+			// 자원 정리
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+
+	
+	public boolean insert(guestbookVo vo) {
 
 		boolean result = false;
 		
@@ -134,11 +187,13 @@ public class guestbookDao {
 			conn = getConnection();			
 		
 			//3. SQL 준비
-			String sql = "delete from guestbook where no = " +i+ " and password = " + password;
+			String sql = "insert into guestbook values(null,?, ?, ?, now())";
 			pstmt = conn.prepareStatement(sql); // 
 			
 			//4. 바인딩(binding)
-
+			pstmt.setString(1, vo.getName());  //vo의 get으로 부터 first ㅜ믇 을 가져온다.
+			pstmt.setString(2, vo.getPassword());
+			pstmt.setString(3, vo.getMessage());
 
 			//5. SQL 실행
 			//update 된 수 바노한
@@ -196,5 +251,5 @@ public class guestbookDao {
 		
 		return conn;
 	}
-	
+
 }

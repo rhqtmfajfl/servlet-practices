@@ -13,21 +13,10 @@
     <description></description>
     <display-name>EmaillistController</display-name>
     <servlet-name>EmaillistController</servlet-name>
-    <servlet-class>com.poscoict.emaillist.controller.EmaillistController
-		</servlet-class>
+    <servlet-class>com.poscoict.emaillist.controller.EmaillistController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>EmaillistController</servlet-name>
-    <url-pattern>/el</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>EmailllistController</display-name>
-    <servlet-name>EmailllistController</servlet-name>
-    <servlet-class>com.poscoict.emaillist.controller.EmailllistController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>EmailllistController</servlet-name>
     <url-pattern>/el</url-pattern>
   </servlet-mapping>
 </web-app>

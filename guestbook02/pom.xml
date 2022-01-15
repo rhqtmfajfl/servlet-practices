@@ -7,7 +7,7 @@
       <artifactId>servlet-practices</artifactId>
       <version>0.0.1-SNAPSHOT</version>
    </parent>
-   <artifactId>helloweb</artifactId>
+   <artifactId>guestbook02</artifactId>
    <packaging>war</packaging>
 
    <properties>
@@ -16,6 +16,13 @@
    </properties>
 
    <dependencies>
+      <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+      <dependency>
+         <groupId>mysql</groupId>
+         <artifactId>mysql-connector-java</artifactId>
+         <version>8.0.17</version>
+      </dependency>
+      
       <!-- servlet -->
       <dependency>
          <groupId>javax.servlet</groupId>
@@ -32,7 +39,7 @@
    </dependencies>
 
    <build>
-      <finalName>helloweb</finalName>
+      <finalName>guestbook02</finalName>
       <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
       <resources>
          <resource>
@@ -57,6 +64,7 @@
             <artifactId>maven-resources-plugin</artifactId>
             <version>3.2.0</version>
             <configuration>
+            
                <encoding>UTF-8</encoding>
             </configuration>
          </plugin>
@@ -71,4 +79,5 @@
          </plugin>
       </plugins>
    </build>
+
 </project>

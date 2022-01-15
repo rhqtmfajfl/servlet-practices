@@ -12,30 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 import com.poscoict.emaillist.dao.EmaillistDao;
 import com.poscoict.emaillist.vo.EmaillistVo;
 
-
-public class EmailllistController extends HttpServlet {
+public class EmaillistController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
- 
-  
-
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	 	request.setCharacterEncoding("utf-8"); //바디부분을 인코딩 필요
+		request.setCharacterEncoding("utf-8");
 
 		String actionName = request.getParameter("a");
 		
 		if("form".equals(actionName)) {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/form.jsp"); //
-			//여기서 부터는 jsp에서 제어권이 넘어감
-			rd.forward(request, response);
-		}else if("add".equals(actionName)) {
-
-
-			String firstName = request.getParameter("fn"); 
-			String lastName = request.getParameter("ln"); 
-		 	String email = request.getParameter("email"); 
-
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/form.jsp");
+			rd.forward(request, response);			
+		} else if("add".equals(actionName)) {
+			String firstName = request.getParameter("fn");
+			String lastName = request.getParameter("ln");
+			String email = request.getParameter("email");
+			
 			EmaillistVo vo = new EmaillistVo();
 			vo.setFirstName(firstName);
 			vo.setLastName(lastName);
@@ -43,26 +35,19 @@ public class EmailllistController extends HttpServlet {
 			
 			new EmaillistDao().insert(vo);
 			
-			
-			response.sendRedirect(request.getContextPath() + "/el");
-		}else {
-			EmaillistDao dao = new EmaillistDao();  //EmaillistDao객체 dao로 생성
-			List<EmaillistVo> list = new EmaillistDao().findAll();
+			response.sendRedirect(request.getContextPath() + "/el");			
+		} else {
+			EmaillistDao dao = new EmaillistDao();
+			List<EmaillistVo> list = dao.findAll();
 			
 			request.setAttribute("list", list);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/index.jsp"); //
-			//여기서 부터는 jsp에서 제어권이 넘어감
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/index.jsp");
 			rd.forward(request, response);
-			
 		}
 	}
 
-	
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		doGet(request, response);
 	}
-
 }

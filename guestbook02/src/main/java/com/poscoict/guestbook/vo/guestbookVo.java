@@ -1,17 +1,19 @@
 package com.poscoict.guestbook.vo;
 
 public class guestbookVo {
-	private int no;
+	private Long no;
 	private String name;
 	private String password;
 	private String message;
-	private String reg_date;
-	public int getNo() {
+	private String date;
+	
+	public Long getNo() {
 		return no;
 	}
-	public void setNo(int no) {
+	public void setNo(Long no) {
 		this.no = no;
 	}
+	
 	public String getName() {
 		return name;
 	}
@@ -30,17 +32,20 @@ public class guestbookVo {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public String getReg_date() {
-		return reg_date;
+	public String getDate() {
+		return date;
 	}
-	public void setReg_date(String reg_date) {
-		this.reg_date = reg_date;
+	public void setDate(String date) {
+		this.date = date;
 	}
+	
 	@Override
 	public String toString() {
 		return "guestbookVo [no=" + no + ", name=" + name + ", password=" + password + ", message=" + message
-				+ ", reg_date=" + reg_date + "]";
+				+ ", date=" + date + "]";
 	}
+	
+	
 	
 	
 }
