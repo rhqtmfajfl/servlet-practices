@@ -5,7 +5,7 @@
 <title>방명록</title>
 </head>
 <body>
-	<form method="post" action="/guestbook01/delete.jsp">
+	<form method="post" action="<%= request.getContextPath() %>/gb?a=delete">
 	<input type='text' name="no" value=<%= request.getParameter("no") %>>
 	<table>
 		<tr>

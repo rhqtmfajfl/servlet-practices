@@ -20,7 +20,7 @@ public class guestbookDaoTest {
 	private static void testdelete() {
 //		String no = request.getParameter("no");
 //		guestbookVo vo = new guestbookVo();
-		boolean result = new guestbookDao().delete(null, null);
+//		boolean result = new guestbookDao().delete(null, null);
 		
 	}
 

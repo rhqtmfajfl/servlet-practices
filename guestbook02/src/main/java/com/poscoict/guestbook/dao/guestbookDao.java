@@ -13,7 +13,7 @@ import com.poscoict.guestbook.vo.guestbookVo;
 
 public class guestbookDao {
 	
-	public boolean delete(Long no,String password) {
+	public boolean delete(int no,String password) {
 
 		boolean result = false;
 		
@@ -138,15 +138,16 @@ public class guestbookDao {
 				Long no = rs.getLong(1);
 				String name = rs.getString(2);
 				String password = rs.getString(3);
-				String message = rs.getString(4);
-				String rag_date = rs.getString(5);
+				String reg_date = rs.getString(4);
+				String message = rs.getString(5);
 				
 				guestbookVo vo = new guestbookVo();
 				vo.setNo(no);
 				vo.setName(name);
 				vo.setPassword(password);
+				vo.setDate(reg_date);
 				vo.setMessage(message);
-				vo.setDate(rag_date);
+				
 //				vo.setEmail(email);
 				
 				result.add(vo);
