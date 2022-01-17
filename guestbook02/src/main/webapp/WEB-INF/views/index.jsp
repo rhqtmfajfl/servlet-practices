@@ -4,7 +4,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-List<guestbookVo> list = new guestbookDao().findAll();
+List<guestbookVo> list = (List<guestbookVo>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
