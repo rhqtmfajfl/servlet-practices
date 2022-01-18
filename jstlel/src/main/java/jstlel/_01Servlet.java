@@ -1,6 +1,9 @@
 package jstlel;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,9 +14,44 @@ public class _01Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			//값도 넘겨보고
+		int iVal = 10;
+		long lVal = 10;
+		float fVal = 3.14f;
+		boolean bVal = true;
+		String sVal = "가나다라마바사";
+		
+		
+			//객체도 넘겨보고
+		
+		Object obj = null;
+		UserVo userVo = new UserVo();
+		userVo.setNo(10L);  //NO의 파라미터 값으로 LONG을 요구
+		userVo.setName("둘리");
 			
-			
-			request
+		
+		//map도 넘겨보고
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("ival", iVal);
+		map.put("lval", lVal);
+		map.put("fval", fVal);
+		map.put("bval", bVal);
+//		map.put("sval", sVal);
+		
+		
+		request.setAttribute("ival", iVal);
+		request.setAttribute("lval", lVal);
+		request.setAttribute("fval", fVal);
+		request.setAttribute("bval", bVal);
+		request.setAttribute("sval", sVal);
+		
+		request.setAttribute("obj", obj);   //obj라는 이름으로 널값 넘기기
+		request.setAttribute("user", userVo);  // user라는 이름으로 userVo 넘기기
+		
+		request.setAttribute("m", map);
+		
+		request
 			.getRequestDispatcher("/WEB-INF/views/01.jsp")
 			.forward(request, response);
 	}
