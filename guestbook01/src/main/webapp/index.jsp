@@ -3,7 +3,7 @@
 <%@page import="com.poscoict.guestbook.dao.guestbookDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	guestbookDao dao = new guestbookDao();  //EmaillistDao객체 dao로 생성
+guestbookDao dao = new guestbookDao();  //EmaillistDao객체 dao로 생성
 	List<guestbookVo> list = new guestbookDao().findAll();
 	//빨간 줄 뜨는 import 부분에서 ctrl space 키를 누르면 내가 import 해야 될 것이 나온다.
 %>

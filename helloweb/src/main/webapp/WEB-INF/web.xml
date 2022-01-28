@@ -9,6 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <description></description>
     <display-name>LifeCycleServlet</display-name>
@@ -19,6 +20,7 @@
     <servlet-name>LifeCycleServlet</servlet-name>
     <url-pattern>/lc</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>CookieServlet</display-name>
